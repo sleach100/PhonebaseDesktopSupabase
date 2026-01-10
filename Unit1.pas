@@ -466,9 +466,11 @@ begin
 
   // SET FORM1 SIZE
   Panel2.visible := true;
-  Panel3.left := 5;
+  //Panel3.left := 5;
+  Panel3.left := MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
   Button32.caption := 'Show Tags';
-  Form1.width := 1275;
+  //Form1.width := 1275;
+  Form1.Width := MulDiv(1275, Form1.PixelsPerInch, 96);   // DPI Aware width setting
 
   // Clear tag filter selections
   for x := 0 to 49 do
@@ -679,10 +681,12 @@ begin
   // Save tags to database instead of files
   SaveTagsToDatabase;
 
-    Panel3.left := 330;
+    //Panel3.left := 330;
+    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     Panel2.visible := true;
-    TButton(sender).caption := 'Hide Tags';
-    Form1.width := 1905;
+
+    //Form1.width := 1905;
+    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
   exit;
 end;
 
@@ -697,7 +701,8 @@ begin
     stringgrid1.cells[0, x+1] := listboxB.items[x];
     stringgrid1.cells[1, x+1] := listboxA.items[x];
   end;
-  Form1.width := 2915;
+  //Form1.width := 2915;
+  Form1.Width := MulDiv(2915, Form1.PixelsPerInch, 96);   // DPI Aware width setting
 end;
 
 procedure TForm1.PBAfterScroll(DataSet: TDataSet);
@@ -770,19 +775,25 @@ procedure TForm1.Button32Click(Sender: TObject);
 begin
   if TButton(sender).caption = 'Hide Tags' then
   begin
+  ShowMessage('Form PixelsPerInch: ' + IntToStr(Form1.PixelsPerInch) + #13#10 +
+            'Screen PixelsPerInch: ' + IntToStr(Screen.PixelsPerInch));
     Panel2.visible := true;
-    Panel3.left := 5;
+    //Panel3.left := 5;
+    Panel3.left := MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     TButton(sender).caption := 'Show Tags';
-    Form1.width := 1275;
+    //Form1.width := 1275;
+    Form1.Width := MulDiv(1275, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     exit;
   end;
 
   if Tbutton(sender).caption = 'Show Tags' then
   begin
-    Panel3.left := 330;
+    //Panel3.left := 330;
+    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     Panel2.visible := true;
     TButton(sender).caption := 'Hide Tags';
-    Form1.width := 1905;
+    //Form1.width := 1905;
+    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     exit;
   end;
 end;
@@ -842,9 +853,11 @@ end;
 procedure TForm1.Button34Click(Sender: TObject);
 begin
     //Restore form state to "Show Tags"
-    Panel3.left := 330;
+    //Panel3.left := 330;
+    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     Panel2.visible := true;
-    Form1.width := 1905;
+    //Form1.width := 1905;
+    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
 end;
 
 end.
