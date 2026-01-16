@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.VCLUI.Wait,
-  FireDAC.Comp.Client, FireDAC.Comp.UI, FireDAC.Comp.DataSet;
+  FireDAC.Comp.Client, FireDAC.Comp.UI, FireDAC.Comp.DataSet, Vcl.Samples.Spin;
 
 
 type
@@ -142,6 +142,8 @@ type
   private
     { Private declarations }
   public
+
+
     { Public declarations }
   end;
 
@@ -150,6 +152,7 @@ var
   GlobalFilter:  string;
   FirstDraw:  boolean;
   FirstDrawCount:  integer;
+
 
 implementation
 
@@ -467,10 +470,10 @@ begin
   // SET FORM1 SIZE
   Panel2.visible := true;
   //Panel3.left := 5;
-  Panel3.left := MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+  Panel3.left := 5;  //MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
   Button32.caption := 'Show Tags';
   //Form1.width := 1275;
-  Form1.Width := MulDiv(1275, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+  Form1.Width := 637;  //MulDiv(637, Form1.PixelsPerInch, 96);   // DPI Aware width setting  1275
 
   // Clear tag filter selections
   for x := 0 to 49 do
@@ -682,11 +685,11 @@ begin
   SaveTagsToDatabase;
 
     //Panel3.left := 330;
-    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Panel3.left := 165;  //MulDiv(165, Form1.PixelsPerInch, 96);   // DPI Aware width setting   330
     Panel2.visible := true;
 
     //Form1.width := 1905;
-    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Form1.Width := 952;  //MulDiv(952, Form1.PixelsPerInch, 96);   // DPI Aware width setting  1905
   exit;
 end;
 
@@ -702,7 +705,7 @@ begin
     stringgrid1.cells[1, x+1] := listboxA.items[x];
   end;
   //Form1.width := 2915;
-  Form1.Width := MulDiv(2915, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+  Form1.Width := 1457;  //MulDiv(1457, Form1.PixelsPerInch, 96);   // DPI Aware width setting  2915
 end;
 
 procedure TForm1.PBAfterScroll(DataSet: TDataSet);
@@ -775,25 +778,25 @@ procedure TForm1.Button32Click(Sender: TObject);
 begin
   if TButton(sender).caption = 'Hide Tags' then
   begin
-  ShowMessage('Form PixelsPerInch: ' + IntToStr(Form1.PixelsPerInch) + #13#10 +
-            'Screen PixelsPerInch: ' + IntToStr(Screen.PixelsPerInch));
+  {ShowMessage('Form PixelsPerInch: ' + IntToStr(Form1.PixelsPerInch) + #13#10 +
+            'Screen PixelsPerInch: ' + IntToStr(Screen.PixelsPerInch)); }
     Panel2.visible := true;
     //Panel3.left := 5;
-    Panel3.left := MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Panel3.left := 5;  MulDiv(5, Form1.PixelsPerInch, 96);   // DPI Aware width setting
     TButton(sender).caption := 'Show Tags';
     //Form1.width := 1275;
-    Form1.Width := MulDiv(1275, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Form1.Width := 637;  MulDiv(637, Form1.PixelsPerInch, 96);   // DPI Aware width setting  1275
     exit;
   end;
 
   if Tbutton(sender).caption = 'Show Tags' then
   begin
     //Panel3.left := 330;
-    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Panel3.left := 165;  MulDiv(165, Form1.PixelsPerInch, 96);   // DPI Aware width setting     330
     Panel2.visible := true;
     TButton(sender).caption := 'Hide Tags';
     //Form1.width := 1905;
-    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Form1.Width := 952;  MulDiv(952, Form1.PixelsPerInch, 96);   // DPI Aware width setting   1905
     exit;
   end;
 end;
@@ -854,10 +857,10 @@ procedure TForm1.Button34Click(Sender: TObject);
 begin
     //Restore form state to "Show Tags"
     //Panel3.left := 330;
-    Panel3.left := MulDiv(330, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Panel3.left := 165;  //MulDiv(165, Form1.PixelsPerInch, 96);   // DPI Aware width setting    330
     Panel2.visible := true;
     //Form1.width := 1905;
-    Form1.Width := MulDiv(1905, Form1.PixelsPerInch, 96);   // DPI Aware width setting
+    Form1.Width := 952;  //MulDiv(952, Form1.PixelsPerInch, 96);   // DPI Aware width setting   1905
 end;
 
 end.
